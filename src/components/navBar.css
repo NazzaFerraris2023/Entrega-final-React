@@ -1,0 +1,35 @@
+.Contenedor-Nav-Bar{
+    background-color: grey;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 20px;
+
+}
+.Contenedor-Nav-Bar div h3{
+    font-size: 1.8em;
+    flex-direction: row;
+    color: white;
+}
+
+.nav-bar ul  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-bar ul li{
+    list-style: none;
+
+}
+.nav-bar ul li a{
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.Contenedor-Widget{
+    display: flex;
+    justify-content: end;
+    transform: translate(700px,-25px);
+}
