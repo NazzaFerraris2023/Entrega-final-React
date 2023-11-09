@@ -1,0 +1,39 @@
+.contenedor-tarjetas{
+    border: 2px solid black;
+    display: inline-block;
+    margin: 1em 2em;
+
+}
+.tarjeta-img{
+    width: 15em;
+    height: 10em;
+
+}
+.tarjeta-body{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.titulo-tarjeta{
+    font-size: 2em;
+    text-transform: capitalize;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.texto-tarjeta{
+    font-size: 1.2em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: justify;
+    font-weight: 100;
+    margin: 1em;
+
+}
+
+.btn-tarjeta{
+    background-color: antiquewhite;
+    padding: .5em;
+    
+}

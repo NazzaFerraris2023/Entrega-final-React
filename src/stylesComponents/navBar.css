@@ -2,7 +2,7 @@
     background-color: grey;
     display: flex;
     justify-content: space-evenly;
-    border-radius: 20px;
+
 
 }
 .Contenedor-Nav-Bar div h3{
@@ -31,5 +31,5 @@
 .Contenedor-Widget{
     display: flex;
     justify-content: end;
-    transform: translate(700px,-25px);
+    transform: translate(100px,-25px);
 }
