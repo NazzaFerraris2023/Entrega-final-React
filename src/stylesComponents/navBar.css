@@ -5,28 +5,29 @@
 
 
 }
-.Contenedor-Nav-Bar div h3{
+.logo{
     font-size: 1.8em;
     flex-direction: row;
     color: white;
 }
 
-.nav-bar ul  {
+.nav-bar   {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.nav-bar ul li{
+.nav-link{
     list-style: none;
-
-}
-.nav-bar ul li a{
     color: white;
     margin: 0 1em;
     text-decoration: none;
     font-size: 1.5em;
+
+
+
 }
+ 
 
 .Contenedor-Widget{
     display: flex;

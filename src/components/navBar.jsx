@@ -2,23 +2,24 @@ import { NavLink } from "react-router-dom"
 import { CartWidget } from "./cartWidget"
 import "../stylesComponents/navBar.css"
 import { Container } from "react-bootstrap"
-
+import { Navbar } from "react-bootstrap"
+import { Nav } from "react-bootstrap"
 
 
 export const NavBar = ()=>{
     return(
-        <NavBar bg="dark">
-            <Container>
-                <NavBar.Brand href='#'>DigitalGamesz</NavBar.Brand>
+        <Navbar bg="dark">
+            <Container className="Contenedor-Nav-Bar">
+                <Navbar.Brand href='#' className="logo">DigitalGamesz</Navbar.Brand>
                 <Nav className='nav-bar'>
-                    <NavLink>Home</NavLink>
-                    <NavLink to={'category/anteojos'}>consolas</NavLink>
-                    <NavLink to={'category/controles'}>controles</NavLink>
+                    <NavLink to={'/'} className='nav-link'>Home</NavLink>
+                    <NavLink to={'category/consolas'}className='nav-link'>consolas</NavLink>
+                    <NavLink to={'category/controles'}className='nav-link'>controles</NavLink>
                 </Nav>
                 <CartWidget/>
             </Container>
 
-        </NavBar>
+        </Navbar>
     )
 } 
 
