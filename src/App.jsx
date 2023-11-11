@@ -12,9 +12,9 @@ function App () {
   {/* rutas */}
   <Routes>
     <Route path='/' 
-    element={<ItemListContainer greeting="Chau Mundo"/>}/>
+    element={<ItemListContainer greeting="Productos"/>}/>
     <Route path='/category/:id' 
-    element={<ItemListContainer greeting="Chau Mundo"/>}/>
+    element={<ItemListContainer greeting="Productos"/>}/>
     <Route path='/items/:id' 
     element={<div>Detalle</div>}/>
     

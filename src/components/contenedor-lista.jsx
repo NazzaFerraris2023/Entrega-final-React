@@ -9,6 +9,7 @@ export const ItemListContainer =(props)=>{
 
     const {id} = useParams()
 
+
     useEffect(()=>{
         const myPromise=new Promise ((resolve,reject)=>{
             setTimeout(()=>{
@@ -20,14 +21,14 @@ myPromise.then((response)=>{
         setItems(response)
     }
     else {
-        const filterByCategory=response.filter(item=>item.category===id)
+        const filterByCategory=response.filter(product=>product.category.toLowerCase()===id.toLowerCase())
         setItems(filterByCategory)
     }
     })
 
     },[id])
 
-    console.log(items)
+    // console.log(items)
 
     return (
         <div>
