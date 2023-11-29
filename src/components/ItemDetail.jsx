@@ -1,8 +1,8 @@
 export const ItemDetail = ({item}) => {
 
     return (<>
-    <h1>{item.nombre}</h1>
-    <img src={item.foto}/>
+    <h1>{item.title}</h1>
+    <img src={item.pictureUrl}/>
     <div></div>
     </>)
 }
