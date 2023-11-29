@@ -18,15 +18,16 @@ export const ItemDetailContainer =()=>{
             },2000)
         })
     myPromise.then((response)=>{
-        const findById=response.find((product)=>product.id.toLowerCase()===Number(id).toLowerCase())
+        console.log(response)
+        const findById=response.find((product)=>product.id===Number(id))
         setItem(findById)
     },[id])
 
     // console.log(items)
 
     return (
-            <Container className="mt-2">
-            {item ? <ItemDetail item={item}/> : <>Cargando..</>}
+            <Container className="mt-4">
+            {item ? <ItemDetail item={item}/> : <>Loding...</>}
             </Container>
     
     )
