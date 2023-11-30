@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import '../stylesComponents/tarjetas.css'
 
 
+
 const Item = ({ item }) => {
     return (
         <Card style={{ width: '18rem' }} className='contenedor-tarjetas'>

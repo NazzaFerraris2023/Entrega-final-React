@@ -12,9 +12,9 @@ export const NavBar = ()=>{
             <Container className="Contenedor-Nav-Bar">
                 <Navbar.Brand href='#' className="logo">DigitalGamesz</Navbar.Brand>
                 <Nav className='nav-bar'>
-                    <NavLink to={'/'} className='nav-link'>Home</NavLink>
-                    <NavLink to={'category/consolas'}className='nav-link'>consolas</NavLink>
-                    <NavLink to={'category/controles'}className='nav-link'>controles</NavLink>
+                <NavLink to='/' className='nav-link'>Home</NavLink>
+<NavLink to='/category/consolas' className='nav-link'>Consolas</NavLink>
+<NavLink to='/category/controles' className='nav-link'>Controles</NavLink>
                 </Nav>
                 <CartWidget/>
             </Container>
@@ -24,20 +24,3 @@ export const NavBar = ()=>{
 } 
 
 
-// export const NavBar =()=>{
-//     return (
-//     <NavBar>
-//         <div className="Contenedor-Nav-Bar">
-//             <h3>DigitalGamesz</h3>
-//                 <Nav className="nav-bar">
-                    
-//                         <NavLink to="category/home">Home</NavLink>
-//                         <NavLink to="category/consolas">Consolas</NavLink>
-                    
-//                 </Nav>
-//                 <CartWidget />
-//         </div>
-//     </NavBar>
-        
-//     )
-// }

@@ -1,27 +1,28 @@
 import { useParams } from "react-router-dom"
 // import "../stylesComponents/contenedorLista.css"
-import "../data/productos"
+// import "../data/productos"
 import { useEffect,useState } from "react"
-import products from "../data/productos"
+// import products from "../data/productos"
 import { Container } from "react-bootstrap"
 import { ItemDetail } from "./ItemDetail";
+
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export const ItemDetailContainer =()=>{
     const [item,setItem]=useState(null)
     const {id} = useParams()
 
     useEffect(()=>{
-        const myPromise = new Promise ((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve(products)
-            },2000)
-        })
+        const db = getFirestore();
+        const docRef = doc(db, "items", id);
 
-        myPromise.then((response)=>{
-            console.log(response)
-            const findById=response.find((product)=>product.id===Number(id))
-            setItem(findById)
-        })
+        getDoc(docRef).then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+                setItem({id: docSnapshot.id, ...docSnapshot.data()});
+            } else {
+                console.log("No such document!");
+            }
+        });
     },[id])
 
     return (

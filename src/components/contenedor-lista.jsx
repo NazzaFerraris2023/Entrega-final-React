@@ -1,34 +1,33 @@
 import { useParams } from "react-router-dom"
 import "../stylesComponents/contenedorLista.css"
-import "../data/productos"
+// import "../data/productos"
 import { useEffect,useState } from "react"
-import products from "../data/productos"
+// import products from "../data/productos"
 import ItemsList from "./itemsList"
+import {getFirestore,getDocs, collection} from 'firebase/firestore'
+import { initializeApp } from "firebase/app";
+
+
+
+
 export const ItemListContainer =(props)=>{
     const [items,setItems]=useState([])
-
     const {id} = useParams()
 
-
     useEffect(()=>{
-        const myPromise=new Promise ((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve(products)
-            },2000)
-        })
-myPromise.then((response)=>{
-    if(!id){
-        setItems(response)
-    }
-    else {
-        const filterByCategory=response.filter(product=>product.category.toLowerCase()===id.toLowerCase())
-        setItems(filterByCategory)
-    }
-    })
+        const db = getFirestore();
+        const itemsCollection = collection(db, "items");
 
+        getDocs(itemsCollection).then((querySnapshot) => {
+            let items = querySnapshot.docs.map(doc => {
+                return {id: doc.id, ...doc.data()}
+            });
+            if (id) {
+                items = items.filter(item => item.category && item.category.toLowerCase() === id.toLowerCase());
+            }
+            setItems(items);
+        });
     },[id])
-
-    // console.log(items)
 
     return (
         <div>
@@ -37,4 +36,3 @@ myPromise.then((response)=>{
         </div>
     )
 }
-
