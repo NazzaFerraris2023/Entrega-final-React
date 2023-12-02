@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom"
 import "../stylesComponents/contenedorLista.css"
-// import "../data/productos"
-import { useEffect,useState } from "react"
-// import products from "../data/productos"
+import { useEffect,useState,useContext } from "react"
 import ItemsList from "./itemsList"
 import {getFirestore,getDocs, collection} from 'firebase/firestore'
 import { initializeApp } from "firebase/app";
+import { Container } from "react-bootstrap"
 
 
 
@@ -13,6 +12,7 @@ import { initializeApp } from "firebase/app";
 export const ItemListContainer =(props)=>{
     const [items,setItems]=useState([])
     const {id} = useParams()
+
 
     useEffect(()=>{
         const db = getFirestore();
@@ -30,9 +30,11 @@ export const ItemListContainer =(props)=>{
     },[id])
 
     return (
+        <Container className="mt-4">
         <div>
-        <div className="Texto">{props.greeting}</div>
-        <ItemsList items={items}/>
+        <h1 className="Texto">{props.greeting}</h1>
+        {items ? <ItemsList items={items}/> : <>Loading</>}
         </div>
+        </Container>
     )
 }

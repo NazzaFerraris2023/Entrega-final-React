@@ -3,9 +3,12 @@ import {NavBar} from './components/navBar'
 import {ItemListContainer} from './components/contenedor-lista'
 import Error404 from './components/Error404'
 import { ItemDetailContainer } from './components/ItemDetailContainer'
-
+import { CartProvider } from './context/cartContex'
+import Cart from './components/cart'
 function App () {
-  return <BrowserRouter> 
+  return (
+  <CartProvider>
+  <BrowserRouter> 
   <NavBar />
 
 
@@ -18,6 +21,8 @@ function App () {
     element={<ItemListContainer greeting="Productos"/>}/>
     <Route path='/items/:id' 
     element={<ItemDetailContainer/>}/>
+    <Route path='/cart' 
+    element={<Cart/>}/>
     
     <Route path='*' 
     element={<Error404/>}/>
@@ -29,6 +34,8 @@ function App () {
 
   
   </BrowserRouter>
+  </CartProvider>
+  )
 } 
 
 export default App
