@@ -7,11 +7,26 @@ export const CartProvider = ({children}) => {
 
     const clear = () => setItems([])
 
-    const onAdd = (item)=>
-        setItems((prev)=>{return[ ...prev,item]
-        
-    })
+    const onAdd = (item,quantity)=>{
+        const exist = items.some(it =>it.id=== item.id)
+        console.log(exist)
+        if (exist){
+            const updateItems =  items.map(i =>{
+                if(i.id ===item.id){
+                    return{
+                        ...i,
+                        quantity:i.quantity + quantity
 
+                    };
+                }else{
+                    return i;
+                }
+            })
+            setItems(updateItems)
+        } else {
+            setItems((prev) => { return [...prev, {...item, quantity}] });
+        }
+    }
 
     const onRemove = (id)=>{
         const filterItems = items.filter(item=>item.id!==id)
@@ -23,9 +38,4 @@ export const CartProvider = ({children}) => {
         <CartContex.Provider value={{items,clear,onAdd, onRemove}}>
         {children}
         </CartContex.Provider>)
-
-
 }
-
-
-

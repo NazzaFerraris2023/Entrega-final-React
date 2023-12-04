@@ -9,62 +9,60 @@ import CheckOut from "./checkOut";
 const Cart = () => {
     const { clear, items,onRemove } = useContext(CartContex);
     const Navigate = useNavigate();
-    // const [comprador,setComprador] = useState({
-    //     name:'1',
-    //     phone:'2',
-    //     email:'3',
-    // })
 
-    // const handleChange = ((event)=>{
-    //     setComprador(comprador =>{
-    //         return{
-    //             ...comprador,
-    //             [event.target.name]:event.target.value,
-    //         }
-    //     })
-    // })
+    const total =  items.reduce((acc,valorActual)=>acc + valorActual.quantity * valorActual.price, 0)
     if (!items.length) {
 
         return (
             <Container className="mt-4">
-            <h2>Comprame algo por favor</h2>;
-            <button onClick={()=>Navigate("/")}>volve al inicio</button>
+            <h2 style={{textAlign:'center'}}>Comprame algo por favor</h2>
+            <div style={{display:'flex',justifyContent:'center'}}>
+            <button onClick={()=>Navigate("/")} style={{padding:'1em', borderRadius:'10px',backgroundColor:'transparent',marginTop:'1em',cursor:'pointer'}}>volve al inicio</button>
+            </div>
             </Container>
             )
     }
             
     
     return (
-        <Container className="mt-4">
-            <h1>Carrito</h1>
+        <Container className="mt-4" style={{display:'flex',justifyContent:"center",flexDirection:"column"}}>
+            <h1 style={{textAlign:"center",fontFamily:"cursive",marginBottom:'1em'}}>Carrito</h1>
 
             <Table striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr style={{display:"flex",justifyContent:'center',flexDirection:'row', gap:'15%'}}>
                         <th>Producto</th>
                         <th>Precio</th>
                         <th>Imagen</th>
+                        <th style={{marginLeft:'2em'}}>Cantidad</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{}}>
                     {items?.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.title}</td>
-                            <td>{item.price}</td>
-                            <td>
-                                <img src={item.pictureUrl} width={"200px"} alt="" />
+                        <tr key={item.id} style={{display:"flex",justifyContent:'center',flexDirection:'row',gap:'15%'}}>
+                            <td style={{fontSize:'20px'}}>{item.title}</td>
+                            <td style={{fontSize:'20px'}}>{item.price}</td>
+                            <td style={{}}>
+                                <img src={item.pictureUrl} width={"150px"} alt="" />
                             </td>
+                            <td style={{fontSize:'20px'}}>{item.quantity}</td>
+
                             {/* <td>{item.price}</td> */}
 
-                            <td onClick={()=>onRemove(item.id)} >X</td>
+                            <td style={{fontSize:'20px'}} onClick={()=>onRemove(item.id)} >X</td>
 
                         </tr>
                     ))}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td style={{fontSize:'20px', textAlign:'end',}}>Total:{total}</td>
+                    </tr>
+                </tfoot>
             </Table>
 
-            <button onClick={clear}>Vaciar carrito</button>
+            <button onClick={clear} style={{backgroundColor:"transparent",border:'none',fontSize:'20px',fontFamily:"cursive",cursor:"pointer", marginBottom:'1em'}}>Vaciar carrito</button>
 
             <CheckOut />
         </Container>
